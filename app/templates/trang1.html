@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điểm của tất cả các lớp</title>
+</head>
+<body>
+    <h1>Điểm của tất cả các lớp</h1>
+
+    {% for lop in all_lop %}
+    <h2>Điểm của lớp {{ lop.TenLop }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Học sinh</th>
+                <th>Loại điểm</th>
+                <th>Giá trị</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for diem in diem_hocsinhs if diem.Student.lophoc_id == lop.ID_lophoc %}
+            <tr>
+                <td>{{ diem.Student.ten }}</td>
+                <td>{{ diem.loaiDiem }}</td>
+                <td>{{ diem.id_diemthanhphan.giaTri }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endfor %}
+</body>
+</html>
